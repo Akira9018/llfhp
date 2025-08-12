@@ -157,7 +157,7 @@ const CostConsultingSection: React.FC<CostConsultingSectionProps> = ({ isModal =
                         <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
                             <div className="relative">
                                 {/* スライド画像 */}
-                                <div className="relative bg-slate-50 h-96 sm:h-[500px] flex items-center justify-center">
+                                <div className="relative bg-slate-50 h-72 sm:h-96 lg:h-[500px] flex items-center justify-center">
                                     <img
                                         src={[
                                             { src: '/5.svg', title: 'LLFの経費削減事業一覧', description: 'LLFが提供する経費削減サービスの全体概要' },
@@ -177,10 +177,10 @@ const CostConsultingSection: React.FC<CostConsultingSectionProps> = ({ isModal =
                                     {/* 前へボタン */}
                                     <button
                                         onClick={() => setCurrentSlide(currentSlide === 0 ? 3 : currentSlide - 1)}
-                                        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-blue-600 hover:bg-blue-700 text-white rounded-full p-3 shadow-lg transition-all duration-300 hover:scale-110"
+                                        className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-blue-600 hover:bg-blue-700 text-white rounded-full p-2 sm:p-3 shadow-lg transition-all duration-300 hover:scale-110"
                                         aria-label="前のスライド"
                                     >
-                                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                                         </svg>
                                     </button>
@@ -188,10 +188,10 @@ const CostConsultingSection: React.FC<CostConsultingSectionProps> = ({ isModal =
                                     {/* 次へボタン */}
                                     <button
                                         onClick={() => setCurrentSlide(currentSlide === 3 ? 0 : currentSlide + 1)}
-                                        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-blue-600 hover:bg-blue-700 text-white rounded-full p-3 shadow-lg transition-all duration-300 hover:scale-110"
+                                        className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-blue-600 hover:bg-blue-700 text-white rounded-full p-2 sm:p-3 shadow-lg transition-all duration-300 hover:scale-110"
                                         aria-label="次のスライド"
                                     >
-                                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                         </svg>
                                     </button>
@@ -200,7 +200,7 @@ const CostConsultingSection: React.FC<CostConsultingSectionProps> = ({ isModal =
                                 {/* スライド情報 */}
                                 <div className="p-6 bg-gradient-to-r from-blue-50 to-white">
                                     <div className="text-center">
-                                        <h5 className="text-xl font-bold text-slate-800 mb-2">
+                                        <h5 className="text-lg sm:text-xl font-bold text-slate-800 mb-2 leading-relaxed">
                                             {[
                                                 { src: '/5.svg', title: 'LLFの経費削減事業一覧', description: 'LLFが提供する経費削減サービスの全体概要' },
                                                 { src: '/6.svg', title: '電気供給の仕組み', description: 'LLF経由の電気供給システムと削減効果' },
@@ -235,8 +235,8 @@ const CostConsultingSection: React.FC<CostConsultingSectionProps> = ({ isModal =
                                     key={index}
                                     onClick={() => setCurrentSlide(index)}
                                     className={`w-3 h-3 rounded-full transition-all duration-300 ${currentSlide === index
-                                            ? 'bg-blue-600 scale-125'
-                                            : 'bg-slate-300 hover:bg-blue-400'
+                                        ? 'bg-blue-600 scale-125'
+                                        : 'bg-slate-300 hover:bg-blue-400'
                                         }`}
                                     aria-label={`スライド ${index + 1} へ移動`}
                                 />
@@ -246,21 +246,22 @@ const CostConsultingSection: React.FC<CostConsultingSectionProps> = ({ isModal =
                         {/* スライドタイトル一覧 */}
                         <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3">
                             {[
-                                { title: 'LLFの経費削減事業一覧', short: '事業一覧' },
-                                { title: '電気供給の仕組み', short: '電気供給' },
-                                { title: '電気料金削減の仕組み', short: '料金削減' },
-                                { title: '導入フロー', short: '導入手順' }
+                                { title: 'LLFの経費削減事業一覧', short: '事業一覧', veryShort: 'LLF事業' },
+                                { title: '電気供給の仕組み', short: '電気供給', veryShort: '電気供給' },
+                                { title: '電気料金削減の仕組み', short: '料金削減', veryShort: '料金削減' },
+                                { title: '導入フロー', short: '導入手順', veryShort: '導入手順' }
                             ].map((item, index) => (
                                 <button
                                     key={index}
                                     onClick={() => setCurrentSlide(index)}
-                                    className={`p-3 rounded-lg text-sm font-medium transition-all duration-300 ${currentSlide === index
-                                            ? 'bg-blue-600 text-white shadow-lg'
-                                            : 'bg-white text-slate-700 border border-slate-200 hover:border-blue-300 hover:shadow-md'
+                                    className={`p-2 sm:p-3 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 leading-tight ${currentSlide === index
+                                        ? 'bg-blue-600 text-white shadow-lg'
+                                        : 'bg-white text-slate-700 border border-slate-200 hover:border-blue-300 hover:shadow-md'
                                         }`}
                                 >
-                                    <div className="hidden sm:block">{item.title}</div>
-                                    <div className="sm:hidden">{item.short}</div>
+                                    <div className="hidden lg:block text-center whitespace-nowrap overflow-hidden text-ellipsis px-1">{item.title}</div>
+                                    <div className="hidden sm:block lg:hidden text-center whitespace-nowrap overflow-hidden text-ellipsis px-1">{item.short}</div>
+                                    <div className="sm:hidden text-center text-xs leading-tight">{item.veryShort}</div>
                                 </button>
                             ))}
                         </div>

@@ -67,66 +67,129 @@ const AboutUs: React.FC = () => {
 
                     <div className="grid gap-8 md:grid-cols-3">
                         {/* ミッション */}
-                        <div className="group bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-blue-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-                            <div className="flex items-center justify-center mb-6">
-                                <div className="p-4 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full group-hover:scale-110 transition-transform duration-300">
-                                    <MissionIcon className="w-10 h-10 text-blue-600" />
+                        <div className="group relative bg-gradient-to-br from-white via-blue-50 to-blue-100 rounded-2xl p-8 shadow-lg border border-blue-200 hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 overflow-hidden">
+                            {/* 装飾的な背景要素 */}
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-blue-200/30 to-transparent rounded-full transform translate-x-8 -translate-y-8"></div>
+                            <div className="absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr from-blue-300/20 to-transparent rounded-full transform -translate-x-6 translate-y-6"></div>
+
+                            {/* アイコンとタイトル */}
+                            <div className="relative z-10 flex items-center justify-center mb-6">
+                                <div className="relative p-4 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-lg">
+                                    <MissionIcon className="w-12 h-12 text-white" />
+                                    {/* アイコン周りの装飾 */}
+                                    <div className="absolute -top-1 -right-1 w-6 h-6 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full animate-pulse"></div>
                                 </div>
                             </div>
-                            <h4 className="text-xl font-bold text-slate-900 text-center mb-4">
-                                ミッション
-                            </h4>
-                            <p className="text-slate-700 text-center leading-relaxed">
+
+                            {/* タイトルバー */}
+                            <div className="relative mb-4">
+                                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg opacity-10"></div>
+                                <h4 className="relative text-xl font-bold text-slate-900 text-center py-2 tracking-wider">
+                                    MISSION
+                                </h4>
+                            </div>
+
+                            <p className="text-slate-700 text-center leading-relaxed mb-6 relative z-10">
                                 介護・医療業界の課題を解決し、<br />
                                 質の高いケアの実現を通じて<br />
                                 社会に貢献します
                             </p>
-                            <div className="mt-4 flex justify-center space-x-2">
-                                <HeartIcon className="w-5 h-5 text-blue-500" />
-                                <ShieldIcon className="w-5 h-5 text-blue-500" />
+
+                            {/* 装飾的なドットライン */}
+                            <div className="flex justify-center items-center space-x-2 mb-4">
+                                <div className="w-6 h-0.5 bg-gradient-to-r from-transparent to-blue-400"></div>
+                                <div className="w-2 h-2 bg-blue-400 rounded-full group-hover:scale-125 transition-transform duration-300"></div>
+                                <div className="w-3 h-3 bg-blue-500 rounded-full group-hover:scale-125 transition-transform duration-300" style={{ animationDelay: '0.1s' }}></div>
+                                <div className="w-2 h-2 bg-blue-600 rounded-full group-hover:scale-125 transition-transform duration-300" style={{ animationDelay: '0.2s' }}></div>
+                                <div className="w-6 h-0.5 bg-gradient-to-l from-transparent to-blue-400"></div>
                             </div>
+
+                            {/* ボトム装飾 */}
+                            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </div>
 
                         {/* ビジョン */}
-                        <div className="group bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-blue-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-                            <div className="flex items-center justify-center mb-6">
-                                <div className="p-4 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full group-hover:scale-110 transition-transform duration-300">
-                                    <VisionIcon className="w-10 h-10 text-blue-600" />
+                        <div className="group relative bg-gradient-to-br from-white via-purple-50 to-indigo-100 rounded-2xl p-8 shadow-lg border border-purple-200 hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 overflow-hidden">
+                            {/* 装飾的な背景要素 */}
+                            <div className="absolute top-0 left-0 w-28 h-28 bg-gradient-to-br from-purple-200/30 to-transparent rounded-full transform -translate-x-6 -translate-y-6"></div>
+                            <div className="absolute bottom-0 right-0 w-20 h-20 bg-gradient-to-tl from-indigo-300/20 to-transparent rounded-full transform translate-x-4 translate-y-4"></div>
+
+                            {/* アイコンとタイトル */}
+                            <div className="relative z-10 flex items-center justify-center mb-6">
+                                <div className="relative p-4 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-full group-hover:scale-110 group-hover:-rotate-6 transition-all duration-300 shadow-lg">
+                                    <VisionIcon className="w-12 h-12 text-white" />
+                                    {/* アイコン周りの装飾 */}
+                                    <div className="absolute -top-1 -left-1 w-6 h-6 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full animate-pulse"></div>
                                 </div>
                             </div>
-                            <h4 className="text-xl font-bold text-slate-900 text-center mb-4">
-                                ビジョン
-                            </h4>
-                            <p className="text-slate-700 text-center leading-relaxed">
+
+                            {/* タイトルバー */}
+                            <div className="relative mb-4">
+                                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-indigo-700 rounded-lg opacity-10"></div>
+                                <h4 className="relative text-xl font-bold text-slate-900 text-center py-2 tracking-wider">
+                                    VISION
+                                </h4>
+                            </div>
+
+                            <p className="text-slate-700 text-center leading-relaxed mb-6 relative z-10">
                                 テクノロジーと専門知識を融合し、<br />
                                 医療と介護の未来を<br />
                                 共に創造していきます
                             </p>
-                            <div className="mt-4 flex justify-center">
-                                <TrendingIcon className="w-6 h-6 text-blue-500" />
+
+                            {/* 装飾的なドットライン */}
+                            <div className="flex justify-center items-center space-x-2 mb-4">
+                                <div className="w-6 h-0.5 bg-gradient-to-r from-transparent to-purple-400"></div>
+                                <div className="w-2 h-2 bg-purple-400 rounded-full group-hover:scale-125 transition-transform duration-300"></div>
+                                <div className="w-3 h-3 bg-indigo-500 rounded-full group-hover:scale-125 transition-transform duration-300" style={{ animationDelay: '0.1s' }}></div>
+                                <div className="w-2 h-2 bg-blue-600 rounded-full group-hover:scale-125 transition-transform duration-300" style={{ animationDelay: '0.2s' }}></div>
+                                <div className="w-6 h-0.5 bg-gradient-to-l from-transparent to-purple-400"></div>
                             </div>
+
+                            {/* ボトム装飾 */}
+                            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-purple-400 via-indigo-500 to-blue-600 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </div>
 
                         {/* バリュー */}
-                        <div className="group bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-blue-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-                            <div className="flex items-center justify-center mb-6">
-                                <div className="p-4 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full group-hover:scale-110 transition-transform duration-300">
-                                    <ValueIcon className="w-10 h-10 text-blue-600" />
+                        <div className="group relative bg-gradient-to-br from-white via-emerald-50 to-green-100 rounded-2xl p-8 shadow-lg border border-emerald-200 hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 overflow-hidden">
+                            {/* 装飾的な背景要素 */}
+                            <div className="absolute top-1/2 right-0 w-24 h-24 bg-gradient-to-bl from-emerald-200/30 to-transparent rounded-full transform translate-x-4 -translate-y-4"></div>
+                            <div className="absolute bottom-0 left-1/2 w-32 h-16 bg-gradient-to-t from-green-300/20 to-transparent rounded-full transform -translate-x-8"></div>
+
+                            {/* アイコンとタイトル */}
+                            <div className="relative z-10 flex items-center justify-center mb-6">
+                                <div className="relative p-4 bg-gradient-to-br from-emerald-500 to-green-600 rounded-full group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 shadow-lg">
+                                    <ValueIcon className="w-12 h-12 text-white" />
+                                    {/* アイコン周りの装飾 */}
+                                    <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-gradient-to-br from-amber-400 to-yellow-500 rounded-full animate-pulse"></div>
                                 </div>
                             </div>
-                            <h4 className="text-xl font-bold text-slate-900 text-center mb-4">
-                                バリュー
-                            </h4>
-                            <p className="text-slate-700 text-center leading-relaxed">
+
+                            {/* タイトルバー */}
+                            <div className="relative mb-4">
+                                <div className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-green-700 rounded-lg opacity-10"></div>
+                                <h4 className="relative text-xl font-bold text-slate-900 text-center py-2 tracking-wider">
+                                    VALUE
+                                </h4>
+                            </div>
+
+                            <p className="text-slate-700 text-center leading-relaxed mb-6 relative z-10">
                                 信頼・革新・共感を大切に、<br />
                                 お客様に寄り添った<br />
                                 最適なソリューションを提供
                             </p>
-                            <div className="mt-4 flex justify-center space-x-1">
-                                <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
-                                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                                <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+
+                            {/* 装飾的なドットライン */}
+                            <div className="flex justify-center items-center space-x-2 mb-4">
+                                <div className="w-6 h-0.5 bg-gradient-to-r from-transparent to-emerald-400"></div>
+                                <div className="w-2 h-2 bg-emerald-400 rounded-full group-hover:scale-125 transition-transform duration-300"></div>
+                                <div className="w-3 h-3 bg-green-500 rounded-full group-hover:scale-125 transition-transform duration-300" style={{ animationDelay: '0.1s' }}></div>
+                                <div className="w-2 h-2 bg-teal-600 rounded-full group-hover:scale-125 transition-transform duration-300" style={{ animationDelay: '0.2s' }}></div>
+                                <div className="w-6 h-0.5 bg-gradient-to-l from-transparent to-emerald-400"></div>
                             </div>
+
+                            {/* ボトム装飾 */}
+                            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-gradient-to-r from-emerald-400 via-green-500 to-teal-600 rounded-full opacity-60 group-hover:opacity-100 transition-opacity duration-300"></div>
                         </div>
                     </div>
                 </div>

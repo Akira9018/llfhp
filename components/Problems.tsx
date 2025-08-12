@@ -5,12 +5,12 @@ import { CostIcon, DxIcon, UnityIcon, EfficiencyIcon } from './icons/ProblemIcon
 const problems = [
     {
         icon: CostIcon,
-        title: '経営改善まで手が回らない',
+        title: '経営改善に手が回らない',
         description: '日々の業務に追われ、コスト削減や将来の事業計画を考える時間がない。'
     },
     {
         icon: DxIcon,
-        title: 'DX化、何から始めるべきか',
+        title: 'DX化何から始める',
         description: 'ITツールの必要性は感じているが、何が自社に合うのか、どう導入すれば良いか分からない。'
     },
     {
