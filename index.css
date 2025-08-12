@@ -1,0 +1,344 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans JP', sans-serif;
+    line-height: 1.6;
+    color: #1e293b;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+    /* ヘッダーの高さ分のオフセット */
+}
+
+/* カスタムグラデーション */
+.bg-gradient-radial {
+    background: radial-gradient(circle, var(--tw-gradient-stops));
+}
+
+/* カスタムアニメーション */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes float-delayed {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-30px);
+    }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+    animation: float-delayed 8s ease-in-out infinite;
+    animation-delay: 2s;
+}
+
+/* ヒーロー背景用の追加アニメーション */
+@keyframes drift {
+
+    0%,
+    100% {
+        transform: translate(0px, 0px) rotate(0deg);
+    }
+
+    33% {
+        transform: translate(30px, -30px) rotate(120deg);
+    }
+
+    66% {
+        transform: translate(-20px, 20px) rotate(240deg);
+    }
+}
+
+@keyframes orbital {
+    0% {
+        transform: rotate(0deg) translateX(50px) rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg) translateX(50px) rotate(-360deg);
+    }
+}
+
+@keyframes sway {
+
+    0%,
+    100% {
+        transform: translateX(0px) translateY(0px);
+    }
+
+    25% {
+        transform: translateX(20px) translateY(-10px);
+    }
+
+    50% {
+        transform: translateX(-15px) translateY(15px);
+    }
+
+    75% {
+        transform: translateX(10px) translateY(-20px);
+    }
+}
+
+.animate-drift {
+    animation: drift 12s ease-in-out infinite;
+}
+
+.animate-orbital {
+    animation: orbital 20s linear infinite;
+}
+
+.animate-sway {
+    animation: sway 8s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+@keyframes gradient-flow {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.animate-shimmer {
+    background: linear-gradient(90deg,
+            #1e293b 25%,
+            #3b82f6 50%,
+            #1d4ed8 75%,
+            #1e293b 100%);
+    background-size: 400% 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: shimmer 8s ease-in-out infinite;
+}
+
+.animate-gradient-flow {
+    background: linear-gradient(45deg,
+            #1e40af,
+            #3b82f6,
+            #60a5fa,
+            #93c5fd,
+            #dbeafe,
+            #93c5fd,
+            #60a5fa,
+            #3b82f6,
+            #1e40af);
+    background-size: 400% 400%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: gradient-flow 10s ease-in-out infinite;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+@keyframes ripple-delayed {
+    0% {
+        transform: scale(0);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(3);
+        opacity: 0;
+    }
+}
+
+.animate-ripple {
+    animation: ripple 6s ease-out infinite;
+}
+
+.animate-ripple-delayed {
+    animation: ripple-delayed 8s ease-out infinite;
+}
+
+/* スプラッシュスクリーンアニメーション */
+@keyframes logoFadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes logoFadeOut {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.2);
+    }
+}
+
+@keyframes curtainOpen {
+    0% {
+        transform: scaleY(1);
+    }
+
+    100% {
+        transform: scaleY(0);
+    }
+}
+
+@keyframes circularExpand {
+    0% {
+        clip-path: circle(0% at 50% 50%);
+    }
+
+    100% {
+        clip-path: circle(150% at 50% 50%);
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: white;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-origin: top;
+}
+
+.splash-logo {
+    animation: logoFadeIn 2s ease-out;
+}
+
+.splash-logo.fade-out {
+    animation: logoFadeOut 0.8s ease-out forwards;
+}
+
+.splash-screen.opening {
+    animation: curtainOpen 1.2s ease-out 0.3s forwards;
+}
+
+.splash-screen.circular-expand {
+    animation: circularExpand 1.5s ease-out 0.3s forwards;
+}
+
+/* 円形拡散用のオーバーレイ */
+.splash-screen.circular-expand::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    clip-path: circle(0% at 50% 50%);
+    animation: circularExpand 1.5s ease-out 0.3s forwards;
+}
+
+.splash-screen.fade-out {
+    animation: fadeOut 1.2s ease-out 0.3s forwards;
+}
+
+/* モバイル最適化 - アニメーション軽量化 */
+@media (max-width: 768px) {
+
+    .animate-float,
+    .animate-float-delayed {
+        animation-duration: 8s;
+        /* より軽いアニメーション */
+    }
+
+    .animate-shimmer {
+        animation-duration: 12s;
+        /* さらにゆっくり */
+    }
+
+    .animate-gradient-flow {
+        animation-duration: 15s;
+        /* さらにゆっくり */
+    }
+
+    /* 複雑なアニメーションを簡素化 */
+    .animate-spin {
+        animation-duration: 30s !important;
+    }
+
+    .animate-bounce {
+        animation-duration: 4s !important;
+    }
+}
