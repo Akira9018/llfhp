@@ -47,6 +47,7 @@ interface CostConsultingSectionProps {
 const CostConsultingSection: React.FC<CostConsultingSectionProps> = ({ isModal = false }) => {
     const [activeStep, setActiveStep] = useState<string | null>(null);
     const [hoveredStep, setHoveredStep] = useState<string | null>(null);
+    const [currentSlide, setCurrentSlide] = useState(0);
 
     return (
         <section className={`relative ${isModal ? 'py-0' : 'py-20 sm:py-28'} bg-gradient-to-br from-blue-50 via-white to-blue-100 overflow-hidden`}>
@@ -150,49 +151,119 @@ const CostConsultingSection: React.FC<CostConsultingSectionProps> = ({ isModal =
                         <div className="mt-4 w-16 h-1 bg-gradient-to-r from-blue-500 to-blue-600 mx-auto rounded-full"></div>
                     </div>
 
-                    {/* 資料グリッド */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-                        {[
-                            { src: '/5.svg', title: '経費削減実績', description: 'これまでの削減実績と効果' },
-                            { src: '/6.svg', title: 'サービス概要', description: 'サービス内容の詳細説明' },
-                            { src: '/7.svg', title: '導入フロー', description: '導入から効果実現までの流れ' },
-                            { src: '/8.svg', title: '料金プラン', description: '各種プランと料金体系' }
-                        ].map((material, index) => (
-                            <div
-                                key={index}
-                                className="group bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-slate-200 hover:border-blue-300"
-                            >
-                                {/* 資料画像 */}
-                                <div className="relative overflow-hidden bg-slate-50">
+                    {/* スライド形式の資料表示 */}
+                    <div className="relative max-w-4xl mx-auto">
+                        {/* スライド本体 */}
+                        <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
+                            <div className="relative">
+                                {/* スライド画像 */}
+                                <div className="relative bg-slate-50 h-96 sm:h-[500px] flex items-center justify-center">
                                     <img
-                                        src={material.src}
-                                        alt={material.title}
-                                        className="w-full h-64 object-contain p-4 group-hover:scale-105 transition-transform duration-300"
+                                        src={[
+                                            { src: '/5.svg', title: 'LLFの経費削減事業一覧', description: 'LLFが提供する経費削減サービスの全体概要' },
+                                            { src: '/6.svg', title: '電気供給の仕組み', description: 'LLF経由の電気供給システムと削減効果' },
+                                            { src: '/7.svg', title: '電気料金削減の仕組み', description: '電気料金削減の具体的なメカニズム' },
+                                            { src: '/8.svg', title: '導入フロー', description: '契約変更から削減実現までの流れ' }
+                                        ][currentSlide].src}
+                                        alt={[
+                                            { src: '/5.svg', title: 'LLFの経費削減事業一覧', description: 'LLFが提供する経費削減サービスの全体概要' },
+                                            { src: '/6.svg', title: '電気供給の仕組み', description: 'LLF経由の電気供給システムと削減効果' },
+                                            { src: '/7.svg', title: '電気料金削減の仕組み', description: '電気料金削減の具体的なメカニズム' },
+                                            { src: '/8.svg', title: '導入フロー', description: '契約変更から削減実現までの流れ' }
+                                        ][currentSlide].title}
+                                        className="max-w-full max-h-full object-contain p-4"
                                     />
-                                    {/* オーバーレイ */}
-                                    <div className="absolute inset-0 bg-blue-600 bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300 flex items-center justify-center">
-                                        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                            <div className="bg-white bg-opacity-90 rounded-full p-3 shadow-lg">
-                                                <svg className="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                                                </svg>
-                                            </div>
+
+                                    {/* 前へボタン */}
+                                    <button
+                                        onClick={() => setCurrentSlide(currentSlide === 0 ? 3 : currentSlide - 1)}
+                                        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-blue-600 hover:bg-blue-700 text-white rounded-full p-3 shadow-lg transition-all duration-300 hover:scale-110"
+                                        aria-label="前のスライド"
+                                    >
+                                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                        </svg>
+                                    </button>
+
+                                    {/* 次へボタン */}
+                                    <button
+                                        onClick={() => setCurrentSlide(currentSlide === 3 ? 0 : currentSlide + 1)}
+                                        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-blue-600 hover:bg-blue-700 text-white rounded-full p-3 shadow-lg transition-all duration-300 hover:scale-110"
+                                        aria-label="次のスライド"
+                                    >
+                                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </button>
+                                </div>
+
+                                {/* スライド情報 */}
+                                <div className="p-6 bg-gradient-to-r from-blue-50 to-white">
+                                    <div className="text-center">
+                                        <h5 className="text-xl font-bold text-slate-800 mb-2">
+                                            {[
+                                                { src: '/5.svg', title: 'LLFの経費削減事業一覧', description: 'LLFが提供する経費削減サービスの全体概要' },
+                                                { src: '/6.svg', title: '電気供給の仕組み', description: 'LLF経由の電気供給システムと削減効果' },
+                                                { src: '/7.svg', title: '電気料金削減の仕組み', description: '電気料金削減の具体的なメカニズム' },
+                                                { src: '/8.svg', title: '導入フロー', description: '契約変更から削減実現までの流れ' }
+                                            ][currentSlide].title}
+                                        </h5>
+                                        <p className="text-slate-600">
+                                            {[
+                                                { src: '/5.svg', title: 'LLFの経費削減事業一覧', description: 'LLFが提供する経費削減サービスの全体概要' },
+                                                { src: '/6.svg', title: '電気供給の仕組み', description: 'LLF経由の電気供給システムと削減効果' },
+                                                { src: '/7.svg', title: '電気料金削減の仕組み', description: '電気料金削減の具体的なメカニズム' },
+                                                { src: '/8.svg', title: '導入フロー', description: '契約変更から削減実現までの流れ' }
+                                            ][currentSlide].description}
+                                        </p>
+
+                                        {/* スライド番号 */}
+                                        <div className="mt-4">
+                                            <span className="text-sm text-blue-600 font-medium">
+                                                {currentSlide + 1} / 4
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
-
-                                {/* 資料情報 */}
-                                <div className="p-6">
-                                    <h5 className="text-lg font-semibold text-slate-800 mb-2">
-                                        {material.title}
-                                    </h5>
-                                    <p className="text-slate-600 text-sm">
-                                        {material.description}
-                                    </p>
-                                </div>
                             </div>
-                        ))}
+                        </div>
+
+                        {/* スライドドット */}
+                        <div className="flex justify-center mt-6 space-x-2">
+                            {[0, 1, 2, 3].map((index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => setCurrentSlide(index)}
+                                    className={`w-3 h-3 rounded-full transition-all duration-300 ${currentSlide === index
+                                            ? 'bg-blue-600 scale-125'
+                                            : 'bg-slate-300 hover:bg-blue-400'
+                                        }`}
+                                    aria-label={`スライド ${index + 1} へ移動`}
+                                />
+                            ))}
+                        </div>
+
+                        {/* スライドタイトル一覧 */}
+                        <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3">
+                            {[
+                                { title: 'LLFの経費削減事業一覧', short: '事業一覧' },
+                                { title: '電気供給の仕組み', short: '電気供給' },
+                                { title: '電気料金削減の仕組み', short: '料金削減' },
+                                { title: '導入フロー', short: '導入手順' }
+                            ].map((item, index) => (
+                                <button
+                                    key={index}
+                                    onClick={() => setCurrentSlide(index)}
+                                    className={`p-3 rounded-lg text-sm font-medium transition-all duration-300 ${currentSlide === index
+                                            ? 'bg-blue-600 text-white shadow-lg'
+                                            : 'bg-white text-slate-700 border border-slate-200 hover:border-blue-300 hover:shadow-md'
+                                        }`}
+                                >
+                                    <div className="hidden sm:block">{item.title}</div>
+                                    <div className="sm:hidden">{item.short}</div>
+                                </button>
+                            ))}
+                        </div>
                     </div>
 
                     {/* 資料に関する説明 */}
