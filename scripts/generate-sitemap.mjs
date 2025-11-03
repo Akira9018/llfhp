@@ -14,7 +14,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Configuration
-const DOMAIN = 'https://llf.co.jp';
+const DOMAIN = 'https://www.llf-inc.com';
 const OUTPUT_DIR = path.join(__dirname, '../public');
 const SITEMAP_PATH = path.join(OUTPUT_DIR, 'sitemap.xml');
 
