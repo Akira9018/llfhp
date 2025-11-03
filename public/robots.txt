@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+
+# Sitemap location
+Sitemap: https://llf.co.jp/sitemap.xml
+
+# Crawl-delay (optional - for being respectful to search engines)
+Crawl-delay: 1
