@@ -4,7 +4,7 @@ import { CostIcon, DxIcon, UnityIcon } from './icons/BusinessIcons';
 import Modal from './Modal';
 import CostConsultingSection from './CostConsultingSection';
 import UnderConstructionSection from './UnderConstructionSection';
-import UnityLoginSection from './UnityLoginSection';
+import UnitySection from './UnitySection';
 
 const businessPillars = [
     {
@@ -195,7 +195,7 @@ const BusinessOverview: React.FC = () => {
                 title="Unity - 会員専用サイト"
                 maxWidth="max-w-lg"
             >
-                <UnityLoginSection isModal={true} />
+                <UnitySection isModal={true} />
             </Modal>
         </>
     );
