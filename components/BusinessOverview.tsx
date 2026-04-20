@@ -192,8 +192,8 @@ const BusinessOverview: React.FC = () => {
             <Modal
                 isOpen={isModalOpen && selectedBusiness === 'unity-platform'}
                 onClose={closeModal}
-                title="Unity - 会員専用サイト"
-                maxWidth="max-w-lg"
+                title=""
+                maxWidth="max-w-6xl"
             >
                 <UnitySection isModal={true} />
             </Modal>
