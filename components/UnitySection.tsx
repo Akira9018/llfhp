@@ -1,7 +1,8 @@
 import React from 'react';
 
 // Google フォームURLが決まったら以下を更新してください
-const GOOGLE_FORM_URL = 'https://forms.gle/YOUR_FORM_URL';
+const FACILITY_FORM_URL = 'https://forms.gle/ZBsFYr3P9v8o9ofh9';
+const HOSPITAL_FORM_URL = 'https://forms.gle/t6zcGgqkY1LXYpXDA';
 
 const PLANS = [
     {
@@ -34,7 +35,7 @@ const PLANS = [
             { text: '対応不可の返信（無制限）', available: true },
         ],
         cta: '申し込みはこちら',
-        ctaHref: GOOGLE_FORM_URL,
+        ctaHref: FACILITY_FORM_URL,
         variant: 'solid' as const,
     },
     {
@@ -51,7 +52,7 @@ const PLANS = [
             { text: '対応不可の返信（無制限）', available: true },
         ],
         cta: '申し込みはこちら',
-        ctaHref: GOOGLE_FORM_URL,
+        ctaHref: FACILITY_FORM_URL,
         variant: 'outline' as const,
     },
 ];
