@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UNITY | 医療×介護マッチングプラットフォーム</title>
+  <meta name="description" content="病院のMSWと介護・福祉施設をつなぐ会員制マッチングプラットフォーム。退院支援の効率化と施設の入居促進を同時に実現します。" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif; background: #fff; color: #0f172a; line-height: 1.7; }
+    a { color: inherit; }
+
+    /* NAV */
+    nav { background: #000; padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-size: 20px; font-weight: 900; color: #fff; text-decoration: none; }
+    .nav-back { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; }
+    .nav-back:hover { color: #fff; }
+
+    /* HERO */
+    .hero { background: #000; color: #fff; text-align: center; padding: 80px 24px 72px; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px); background-size: 40px 40px; }
+    .hero-badge { position: relative; display: inline-block; border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 4px 16px; font-size: 11px; letter-spacing: 3px; color: rgba(255,255,255,0.6); margin-bottom: 24px; text-transform: uppercase; }
+    .hero h1 { position: relative; font-size: clamp(56px, 12vw, 96px); font-weight: 900; letter-spacing: -2px; margin-bottom: 16px; }
+    .hero-sub { position: relative; font-size: clamp(16px, 3vw, 22px); color: rgba(255,255,255,0.7); margin-bottom: 12px; }
+    .hero-desc { position: relative; font-size: 14px; color: rgba(255,255,255,0.5); max-width: 480px; margin: 0 auto 40px; line-height: 1.8; }
+    .btn-primary { display: inline-block; background: #fff; color: #000; font-weight: 700; font-size: 14px; padding: 14px 40px; border-radius: 999px; text-decoration: none; transition: background 0.2s; }
+    .btn-primary:hover { background: #e2e8f0; }
+    .hero-note { position: relative; margin-top: 16px; font-size: 12px; color: rgba(255,255,255,0.3); }
+
+    /* STATS */
+    .stats { border-bottom: 1px solid #f1f5f9; padding: 40px 24px; }
+    .stats-inner { max-width: 680px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; text-align: center; }
+    .stat-num { font-size: 28px; font-weight: 900; }
+    .stat-unit { font-size: 14px; font-weight: 700; }
+    .stat-desc { font-size: 12px; color: #94a3b8; margin-top: 4px; }
+
+    /* SECTION COMMON */
+    section { padding: 72px 24px; }
+    .inner { max-width: 780px; margin: 0 auto; }
+    .label { font-size: 11px; font-weight: 700; letter-spacing: 3px; color: #94a3b8; text-transform: uppercase; margin-bottom: 12px; }
+    h2 { font-size: clamp(24px, 4vw, 34px); font-weight: 900; line-height: 1.2; margin-bottom: 32px; }
+
+    /* PROBLEM */
+    .problem { background: #fff; }
+    .problem-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 40px; }
+    .problem-card { background: #f8fafc; border-radius: 16px; padding: 20px; display: flex; gap: 16px; align-items: flex-start; }
+    .problem-icon { font-size: 24px; flex-shrink: 0; }
+    .problem-text { font-size: 14px; color: #475569; line-height: 1.6; }
+    .arrow-down { text-align: center; }
+    .arrow-down span { display: inline-block; width: 1px; height: 32px; background: #e2e8f0; margin-bottom: 8px; }
+    .arrow-down p { font-size: 13px; font-weight: 700; }
+
+    /* HOW */
+    .how { background: #0f172a; color: #fff; }
+    .how h2 { color: #fff; }
+    .how-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 48px; }
+    .how-role { display: flex; align-items: center; gap: 8px; margin-bottom: 24px; }
+    .how-role span { font-size: 22px; }
+    .how-role p { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.7); }
+    .how-steps { display: flex; flex-direction: column; gap: 16px; }
+    .how-step { display: flex; gap: 12px; align-items: flex-start; }
+    .step-num { width: 24px; height: 24px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.5); flex-shrink: 0; }
+    .step-text { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.6; padding-top: 2px; }
+
+    /* FEATURES */
+    .features { background: #fff; }
+    .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .feature-card { border: 1px solid #e2e8f0; border-radius: 16px; padding: 20px; transition: border-color 0.2s; }
+    .feature-card:hover { border-color: #000; }
+    .feature-icon { font-size: 28px; margin-bottom: 12px; }
+    .feature-title { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+    .feature-desc { font-size: 12px; color: #94a3b8; line-height: 1.6; }
+
+    /* PRICING */
+    .pricing { background: #f8fafc; }
+    .pricing-note { font-size: 13px; color: #94a3b8; margin-top: -20px; margin-bottom: 40px; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .plan-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 28px; display: flex; flex-direction: column; position: relative; }
+    .plan-card.featured { background: #000; border-color: #000; color: #fff; }
+    .plan-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #000; color: #fff; font-size: 10px; font-weight: 700; padding: 4px 14px; border-radius: 999px; white-space: nowrap; }
+    .plan-name { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #94a3b8; margin-bottom: 8px; }
+    .plan-card.featured .plan-name { color: rgba(255,255,255,0.5); }
+    .plan-price { font-size: 36px; font-weight: 900; line-height: 1; }
+    .plan-period { font-size: 12px; color: #94a3b8; margin-top: 4px; margin-bottom: 6px; }
+    .plan-card.featured .plan-period { color: rgba(255,255,255,0.5); }
+    .plan-desc { font-size: 12px; color: #94a3b8; margin-bottom: 24px; }
+    .plan-card.featured .plan-desc { color: rgba(255,255,255,0.5); }
+    .plan-features { list-style: none; display: flex; flex-direction: column; gap: 10px; flex: 1; margin-bottom: 24px; }
+    .plan-feature { display: flex; gap: 8px; align-items: flex-start; font-size: 13px; line-height: 1.4; }
+    .plan-feature.unavailable { color: #cbd5e1; }
+    .check { color: #000; font-weight: 700; flex-shrink: 0; }
+    .plan-card.featured .check { color: #fff; }
+    .cross { color: #e2e8f0; flex-shrink: 0; }
+    .plan-btn { display: block; text-align: center; font-size: 13px; font-weight: 700; padding: 12px; border-radius: 12px; text-decoration: none; transition: background 0.2s; }
+    .plan-btn-dark { background: #000; color: #fff; }
+    .plan-btn-dark:hover { background: #1e293b; }
+    .plan-btn-light { background: #fff; color: #000; }
+    .plan-btn-light:hover { background: #f1f5f9; }
+
+    /* INVITE */
+    .invite { background: #fff; }
+    .invite-box { border: 1px solid #e2e8f0; border-radius: 20px; padding: 28px 32px; display: flex; gap: 20px; }
+    .invite-icon { font-size: 28px; flex-shrink: 0; }
+    .invite-title { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+    .invite-text { font-size: 14px; color: #64748b; line-height: 1.8; }
+    .invite-hospital { display: block; margin-top: 16px; padding-top: 16px; border-top: 1px solid #f1f5f9; font-size: 14px; }
+    .invite-hospital a { font-weight: 700; text-decoration: underline; }
+
+    /* CTA */
+    .cta { background: #000; color: #fff; text-align: center; padding: 80px 24px; }
+    .cta h2 { font-size: clamp(24px, 4vw, 36px); font-weight: 900; margin-bottom: 12px; }
+    .cta p { font-size: 14px; color: rgba(255,255,255,0.5); max-width: 360px; margin: 0 auto 40px; }
+    .cta-links { display: flex; justify-content: center; gap: 24px; margin-top: 24px; font-size: 12px; color: rgba(255,255,255,0.3); }
+    .cta-links a { color: rgba(255,255,255,0.3); text-decoration: underline; }
+    .cta-links a:hover { color: rgba(255,255,255,0.7); }
+
+    /* FOOTER */
+    footer { background: #000; border-top: 1px solid rgba(255,255,255,0.1); padding: 20px 32px; text-align: center; font-size: 12px; color: rgba(255,255,255,0.3); }
+
+    @media (max-width: 640px) {
+      .problem-grid { grid-template-columns: 1fr; }
+      .how-grid { grid-template-columns: 1fr; }
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .stats-inner { grid-template-columns: 1fr; gap: 16px; }
+      .invite-box { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo">UNITY</a>
+    <a href="/" class="nav-back">← LLF合同会社</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-badge">Matching Platform</div>
+    <h1>UNITY</h1>
+    <p class="hero-sub">医療 × 介護をつなぐ</p>
+    <p class="hero-desc">病院のMSWと介護・福祉施設をダイレクトにつなぐ会員制マッチングプラットフォーム。退院支援の効率化と施設の入居促進を同時に実現します。</p>
+    <a href="https://forms.gle/ZBsFYr3P9v8o9ofh9" target="_blank" rel="noopener noreferrer" class="btn-primary">施設の方 申し込みはこちら →</a>
+    <p class="hero-note">招待制サービスです。申し込み後に招待メールをお送りします。</p>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stats-inner">
+      <div>
+        <p class="stat-num">3<span class="stat-unit">プラン</span></p>
+        <p class="stat-desc">無料・ライト・プロ</p>
+      </div>
+      <div>
+        <p class="stat-num" style="font-size:20px;padding-top:4px;">大阪・兵庫</p>
+        <p class="stat-desc">サービスエリア（順次拡大）</p>
+      </div>
+      <div>
+        <p class="stat-num">2026<span class="stat-unit">年5月</span></p>
+        <p class="stat-desc">サービス開始</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROBLEM -->
+  <section class="problem">
+    <div class="inner">
+      <p class="label">Problem</p>
+      <h2>退院調整、まだ<br>電話とFAXで消耗していませんか？</h2>
+      <div class="problem-grid">
+        <div class="problem-card"><div class="problem-icon">📞</div><p class="problem-text">空き確認のために何十件も電話をかけ続ける</p></div>
+        <div class="problem-card"><div class="problem-icon">📠</div><p class="problem-text">FAXでの情報共有で返答が遅く、患者の退院が滞る</p></div>
+        <div class="problem-card"><div class="problem-icon">📋</div><p class="problem-text">施設ごとの受け入れ条件を把握しきれない</p></div>
+        <div class="problem-card"><div class="problem-icon">⏰</div><p class="problem-text">MSWの業務時間の大半が調整連絡に費やされる</p></div>
+      </div>
+      <div class="arrow-down"><span></span><p>UNITYがこれらをデジタルで解決します</p></div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how">
+    <div class="inner">
+      <p class="label" style="color:rgba(255,255,255,0.3)">How it works</p>
+      <h2>かんたん4ステップ</h2>
+      <div class="how-grid">
+        <div>
+          <div class="how-role"><span>🏥</span><p>病院 MSW</p></div>
+          <div class="how-steps">
+            <div class="how-step"><div class="step-num">1</div><p class="step-text">退院が近づいた患者の情報を案件として登録</p></div>
+            <div class="how-step"><div class="step-num">2</div><p class="step-text">条件に合う施設へ一括で問い合わせ</p></div>
+            <div class="how-step"><div class="step-num">3</div><p class="step-text">チャットで施設と直接やりとり・調整</p></div>
+            <div class="how-step"><div class="step-num">4</div><p class="step-text">入居確定まで画面上で一元管理</p></div>
+          </div>
+        </div>
+        <div>
+          <div class="how-role"><span>🏠</span><p>介護・福祉施設</p></div>
+          <div class="how-steps">
+            <div class="how-step"><div class="step-num">1</div><p class="step-text">施設情報・空き状況を登録</p></div>
+            <div class="how-step"><div class="step-num">2</div><p class="step-text">病院から問い合わせが届く</p></div>
+            <div class="how-step"><div class="step-num">3</div><p class="step-text">対応可能／不可をワンクリックで回答</p></div>
+            <div class="how-step"><div class="step-num">4</div><p class="step-text">チャットで詳細を調整・入居確定</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <div class="inner">
+      <p class="label">Features</p>
+      <h2>主な機能</h2>
+      <div class="features-grid">
+        <div class="feature-card"><div class="feature-icon">📨</div><p class="feature-title">問い合わせ管理</p><p class="feature-desc">受信・返信・ステータスを一元管理</p></div>
+        <div class="feature-card"><div class="feature-icon">💬</div><p class="feature-title">チャット機能</p><p class="feature-desc">施設とMSWがリアルタイムでやりとり</p></div>
+        <div class="feature-card"><div class="feature-icon">🏢</div><p class="feature-title">施設情報登録</p><p class="feature-desc">受け入れ条件・空き状況を掲載</p></div>
+        <div class="feature-card"><div class="feature-icon">📊</div><p class="feature-title">ダッシュボード</p><p class="feature-desc">今月の返信数・対応率を即確認</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing">
+    <div class="inner">
+      <p class="label">Pricing</p>
+      <h2>料金プラン</h2>
+      <p class="pricing-note">プラン間の違いは「対応可能」返信の月間上限のみ。対応不可の返信は全プラン無制限です。</p>
+      <div class="pricing-grid">
+        <!-- 無料 -->
+        <div class="plan-card">
+          <p class="plan-name">無料プラン</p>
+          <p class="plan-price">¥0</p>
+          <p class="plan-period">&nbsp;</p>
+          <p class="plan-desc">まずはサービスを体験したい方へ</p>
+          <ul class="plan-features">
+            <li class="plan-feature"><span class="check">✓</span>問い合わせ受信</li>
+            <li class="plan-feature"><span class="check">✓</span>施設情報の登録・公開</li>
+            <li class="plan-feature unavailable"><span class="cross">✕</span>対応可能の返信</li>
+          </ul>
+          <a href="mailto:info@llf-inc.com" class="plan-btn plan-btn-dark">お問い合わせ</a>
+        </div>
+        <!-- ライト -->
+        <div class="plan-card featured">
+          <div class="plan-badge">人気</div>
+          <p class="plan-name">ライトプラン</p>
+          <p class="plan-price">¥10,000</p>
+          <p class="plan-period">/月（税別）</p>
+          <p class="plan-desc">少量の受け入れから始めたい施設に</p>
+          <ul class="plan-features">
+            <li class="plan-feature"><span class="check">✓</span>問い合わせ受信</li>
+            <li class="plan-feature"><span class="check">✓</span>施設情報の登録・公開</li>
+            <li class="plan-feature"><span class="check">✓</span>対応可能の返信（月3件）</li>
+            <li class="plan-feature"><span class="check">✓</span>対応不可の返信（無制限）</li>
+          </ul>
+          <a href="https://forms.gle/ZBsFYr3P9v8o9ofh9" target="_blank" rel="noopener noreferrer" class="plan-btn plan-btn-light">申し込みはこちら</a>
+        </div>
+        <!-- プロ -->
+        <div class="plan-card">
+          <p class="plan-name">プロプラン</p>
+          <p class="plan-price">¥30,000</p>
+          <p class="plan-period">/月（税別）</p>
+          <p class="plan-desc">積極的に受け入れを増やしたい施設に</p>
+          <ul class="plan-features">
+            <li class="plan-feature"><span class="check">✓</span>問い合わせ受信</li>
+            <li class="plan-feature"><span class="check">✓</span>施設情報の登録・公開</li>
+            <li class="plan-feature"><span class="check">✓</span>対応可能の返信（無制限）</li>
+            <li class="plan-feature"><span class="check">✓</span>対応不可の返信（無制限）</li>
+          </ul>
+          <a href="https://forms.gle/ZBsFYr3P9v8o9ofh9" target="_blank" rel="noopener noreferrer" class="plan-btn plan-btn-dark">申し込みはこちら</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INVITE -->
+  <section class="invite">
+    <div class="inner">
+      <div class="invite-box">
+        <div class="invite-icon">📋</div>
+        <div>
+          <p class="invite-title">招待制サービスについて</p>
+          <p class="invite-text">
+            UNITYは安心してご利用いただくため、招待制を採用しています。施設の方はフォームよりお申し込みください。弊社で内容を確認のうえ、3営業日以内に招待メールをお送りします。ご不明な点は <a href="mailto:info@llf-inc.com" style="text-decoration:underline;font-weight:600;">info@llf-inc.com</a> までお気軽にどうぞ。
+            <span class="invite-hospital">
+              <strong>病院・MSWの方はこちら → </strong>
+              <a href="https://forms.gle/t6zcGgqkY1LXYpXDA" target="_blank" rel="noopener noreferrer" style="text-decoration:underline;font-weight:600;">病院側 申し込みフォーム</a>
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta">
+    <h2>退院調整をもっとスマートに</h2>
+    <p>大阪・兵庫エリアの医療機関・介護施設の方、まずはお気軽にお申し込みください。</p>
+    <a href="https://forms.gle/ZBsFYr3P9v8o9ofh9" target="_blank" rel="noopener noreferrer" class="btn-primary">申し込みはこちら →</a>
+    <div class="cta-links">
+      <a href="/terms">利用規約</a>
+      <a href="/privacy">プライバシーポリシー</a>
+      <a href="mailto:info@llf-inc.com">info@llf-inc.com</a>
+    </div>
+  </div>
+
+  <footer>© 2026 LLF合同会社</footer>
+
+</body>
+</html>
