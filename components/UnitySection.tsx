@@ -293,10 +293,12 @@ const UnitySection: React.FC<UnitySectionProps> = () => {
                     <div>
                         <p className="font-bold text-sm mb-1">招待制サービスについて</p>
                         <p className="text-sm text-slate-600 leading-relaxed">
-                            UNITYは安心してご利用いただくため、招待制を採用しています。
-                            フォームよりお申し込みいただくと、弊社で内容を確認のうえ招待メールをお送りします。
-                            MSW（病院側）のアカウント発行は弊社が管理いたします。
+                            UNITYは安心してご利用いただくため、招待制を採用しています。施設の方は申し込みフォームよりご登録ください。弊社で内容を確認のうえ招待メールをお送りします。
                             ご不明な点は <a href="mailto:info@llf-inc.com" className="underline font-medium">info@llf-inc.com</a> までお気軽にどうぞ。
+                            <span className="block mt-3 pt-3 border-t border-slate-200 text-sm">
+                                <span className="font-bold text-black">病院・MSWの方はこちら → </span>
+                                <a href={HOSPITAL_FORM_URL} target="_blank" rel="noopener noreferrer" className="underline font-medium text-black">病院側 申し込みフォーム</a>
+                            </span>
                         </p>
                     </div>
                 </div>
