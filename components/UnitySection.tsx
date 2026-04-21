@@ -122,7 +122,7 @@ const UnitySection: React.FC<UnitySectionProps> = () => {
                         退院支援の効率化と施設の入居促進を同時に実現します。
                     </p>
                     <a
-                        href={GOOGLE_FORM_URL}
+                        href={FACILITY_FORM_URL}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-block bg-white text-black font-bold px-10 py-4 rounded-full text-sm hover:bg-slate-100 transition-colors"
@@ -311,7 +311,7 @@ const UnitySection: React.FC<UnitySectionProps> = () => {
                     大阪・兵庫エリアの医療機関・介護施設の方、まずはお気軽にお申し込みください。
                 </p>
                 <a
-                    href={GOOGLE_FORM_URL}
+                    href={FACILITY_FORM_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-block bg-white text-black font-bold px-10 py-4 rounded-full text-sm hover:bg-slate-100 transition-colors mb-6"
