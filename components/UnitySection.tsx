@@ -319,6 +319,7 @@ const UnitySection: React.FC<UnitySectionProps> = () => {
                     申し込みはこちら →
                 </a>
                 <div className="flex justify-center gap-6 text-xs text-white/40">
+                    <a href="/tokusho" target="_blank" rel="noopener noreferrer" className="hover:text-white/70 transition-colors underline">特定商取引法に基づく表記</a>
                     <a href="/terms" target="_blank" rel="noopener noreferrer" className="hover:text-white/70 transition-colors underline">利用規約</a>
                     <a href="/privacy" target="_blank" rel="noopener noreferrer" className="hover:text-white/70 transition-colors underline">プライバシーポリシー</a>
                     <a href="mailto:info@llf-inc.com" className="hover:text-white/70 transition-colors">info@llf-inc.com</a>
