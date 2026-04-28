@@ -42,7 +42,17 @@ const Footer: React.FC = () => {
                         </p>
                     </div>
 
-                    <div className="border-t border-blue-800/50 pt-6">
+                    <div className="border-t border-blue-800/50 pt-6 space-y-3">
+                        <div className="flex justify-center">
+                            <a
+                                href="https://llf-inc.com/tokusho"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-blue-300 hover:text-white text-sm underline underline-offset-2 transition-colors duration-200"
+                            >
+                                特定商取引法に基づく表記
+                            </a>
+                        </div>
                         <p className="text-base text-blue-300">
                             &copy; 2024 LLF G.K. All Rights Reserved.
                         </p>

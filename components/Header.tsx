@@ -21,6 +21,7 @@ const Header: React.FC = () => {
         { href: '#news', label: 'NEWS' },
         { href: '#contact', label: 'お問い合わせ' },
         { href: '#company-info', label: '会社情報' },
+        { href: 'https://llf-inc.com/tokusho', label: '特定商取引法', external: true },
     ];
 
     return (
@@ -44,13 +45,18 @@ const Header: React.FC = () => {
                                     key={link.href}
                                     href={link.href}
                                     className="text-slate-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 whitespace-nowrap"
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        const targetElement = document.querySelector(link.href);
-                                        if (targetElement) {
-                                            targetElement.scrollIntoView({ behavior: 'smooth' });
+                                    {...(link.external
+                                        ? { target: '_blank', rel: 'noopener noreferrer' }
+                                        : {
+                                            onClick: (e: React.MouseEvent<HTMLAnchorElement>) => {
+                                                e.preventDefault();
+                                                const targetElement = document.querySelector(link.href);
+                                                if (targetElement) {
+                                                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                                                }
+                                            }
                                         }
-                                    }}
+                                    )}
                                 >
                                     {link.label}
                                 </a>
@@ -100,14 +106,19 @@ const Header: React.FC = () => {
                                 key={link.href}
                                 href={link.href}
                                 className="text-slate-600 hover:text-blue-600 hover:bg-blue-50 block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200"
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    setIsMobileMenuOpen(false);
-                                    const targetElement = document.querySelector(link.href);
-                                    if (targetElement) {
-                                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                                {...(link.external
+                                    ? { target: '_blank', rel: 'noopener noreferrer' }
+                                    : {
+                                        onClick: (e: React.MouseEvent<HTMLAnchorElement>) => {
+                                            e.preventDefault();
+                                            setIsMobileMenuOpen(false);
+                                            const targetElement = document.querySelector(link.href);
+                                            if (targetElement) {
+                                                targetElement.scrollIntoView({ behavior: 'smooth' });
+                                            }
+                                        }
                                     }
-                                }}
+                                )}
                             >
                                 {link.label}
                             </a>
